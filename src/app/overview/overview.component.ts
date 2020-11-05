@@ -46,8 +46,15 @@ export class OverviewComponent {
   }
 
   removeStudent(event) {
+    let r = confirm("Are you sure you wish to delete this user?");
+    if (!r) return;
     this.students.splice(event, 1);
     localStorage.setItem('students', JSON.stringify(this.students));
     window.location.reload();
   }
+
+
+
+
+
 }
