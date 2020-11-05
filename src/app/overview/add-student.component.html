@@ -1,0 +1,17 @@
+<div class="card-body">
+  <h5>Add student</h5>
+  <div class="col-12">
+    <h6>Personal information</h6>
+    <input [(ngModel)]="student.firstName" pInputText type="text" class="form-control p-inputtext-sm mb-3" placeholder="First name" />
+    <input [(ngModel)]="student.lastName" pInputText type="text" class="form-control p-inputtext-sm mb-3" placeholder="Last name" />
+    <input [(ngModel)]="student.age" pInputText type="number" min="18" class="form-control p-inputtext-sm mb-3" placeholder="Age" />
+    <h6>Courses</h6>
+    <input [(ngModel)]="student.courses.math" pInputText type="number" min="1" max="10" class="form-control p-inputtext-sm mb-3" placeholder="Math" />
+    <input [(ngModel)]="student.courses.music" pInputText type="number" min="1" max="10" class="form-control p-inputtext-sm mb-3" placeholder="Music" />
+    <input [(ngModel)]="student.courses.science" pInputText type="number" min="1" max="10" class="form-control p-inputtext-sm mb-3" placeholder="Science" />
+    <input [(ngModel)]="student.courses.biology" pInputText type="number" min="1" max="10" class="form-control p-inputtext-sm mb-3" placeholder="Biology" />
+  </div>
+  <hr />
+  <p>{{student.firstName}}</p>
+  <button type="button" pButton label="Save student" (click)="saveStudent()"></button>
+</div>

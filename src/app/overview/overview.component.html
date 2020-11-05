@@ -1,0 +1,40 @@
+﻿<div class="card mt-4 mb-4">
+  <h4 class="card-header">Welcome, {{user}}!</h4>
+  <div class="card-body">
+    <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+    <add-student *ngIf="studentForm"></add-student>
+    <button type="button" pButton class="p-button-sm" label="Add Student" (click)="addStudent()"></button>&nbsp; <button *ngIf="studentForm" type="button" pButton class="p-button-sm" label="Cancel" (click)="studentForm = !studentForm"></button>
+    <hr>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th style="width: 10%">ID</th>
+          <th style="width: 10%">First Name</th>
+          <th style="width: 10%">Last Name</th>
+          <th style="width: 10%">Age</th>
+          <th style="width: 10%">Math</th>
+          <th style="width: 10%">Science</th>
+          <th style="width: 10%">Biology</th>
+          <th style="width: 10%">Music</th>
+          <th style="width: 10%">Save</th>
+          <th style="width: 10%">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of pageOfItems; let i = index">
+          <td style="width: 10%">{{student.id}}</td>
+          <td style="width: 10%">{{student.firstName}}</td>
+          <td style="width: 10%">{{student.lastName}}</td>
+          <td style="width: 10%">{{student.age}}</td>
+          <td style="width: 10%"><input value={{student.courses.math}} [(ngModel)]="student.courses.math" pInputText type="number" min="1" max="10" class="form-control p-inputtext-sm mb-3" /></td>
+          <td style="width: 10%"><input value={{student.courses.science}} [(ngModel)]="student.courses.science" pInputText type="number" min="1" max="10" class="form-control p-inputtext-sm mb-3" /></td>
+          <td style="width: 10%"><input value={{student.courses.biology}} [(ngModel)]="student.courses.biology" pInputText type="number" min="1" max="10" class="form-control p-inputtext-sm mb-3" /></td>
+          <td style="width: 10%"><input value={{student.courses.music}} [(ngModel)]="student.courses.music" pInputText type="number" min="1" max="10" class="form-control p-inputtext-sm mb-3" /></td>
+          <td style="width: 10%"><i class="cursor-pointer text-success pi pi-check" (click)="saveStudent(student, i)"></i></td>
+          <td style="width: 10%"><i class="cursor-pointer text-danger pi pi-times" (click)="removeStudent(i)"></i></td>
+        </tr>
+      </tbody>
+    </table>
+    <jw-pagination [items]=" students" (changePage)="onChangePage($event)"></jw-pagination>
+  </div>
+</div>
