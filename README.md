@@ -1,5 +1,8 @@
 Simple student administration system
 
+<code>Pull, npm install, npm start</code>
+
+
 Instructions:
 
 Implement a simple student information system, where the user can:
