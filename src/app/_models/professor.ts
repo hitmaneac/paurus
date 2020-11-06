@@ -1,5 +1,5 @@
-﻿export class Student {
-  id: string;
+﻿export class Professor {
+  id: number;
   name: string;
   courses: Array<number>;
 }

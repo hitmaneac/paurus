@@ -1,0 +1,21 @@
+﻿<div class="card mt-4 mb-4">
+  <h4 class="card-header">Professors</h4>
+  <div class="card-body">
+    <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Professor</th>
+          <th>Courses</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let professor of professors; let i = index">
+          <td>{{professor.name}}</td>
+          <td><span *ngFor="let course of courses">{{course.id === professor.courses[i] && course.name}}</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <jw-pagination [items]="pageOfItems" (changePage)="onChangePage($event)" [pageSize]="20"></jw-pagination>
+  </div>
+</div>

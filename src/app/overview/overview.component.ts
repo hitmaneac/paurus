@@ -3,6 +3,7 @@ import { first } from 'rxjs/operators';
 import { User } from '@app/_models';
 import { UserService } from '@app/_services';
 import { Student } from '@app/_models/student';
+import { Course } from '@app/_models/course';
 
 @Component({ templateUrl: 'overview.component.html' })
 export class OverviewComponent {
@@ -10,9 +11,11 @@ export class OverviewComponent {
   users: User[];
   user: String = JSON.parse(localStorage.getItem('user')).firstName;
   studentForm: boolean = false;
-  students: Student[];
+  students: Array<Student>;
+  courses: Array<Course>;
   pageOfItems: Array<any>;
   pageNum: number = 20;
+  selectedItem;
 
   constructor(private userService: UserService) { }
 
@@ -33,11 +36,20 @@ export class OverviewComponent {
 
   viewStudents() {
     this.students = JSON.parse(localStorage.getItem('students')) || [];
+    this.courses = JSON.parse(localStorage.getItem('courses')) || [];
   }
 
   onChangePage(pageOfItems: Array<any>) {
     this.pageOfItems = pageOfItems;
     console.log(this.pageOfItems);
+  }
+
+  addCourse(e) {
+    console.log(e);
+    this.selectedItem = e;
+    //this.students[i].courses.push(index);
+
+    //localStorage.setItem('students', JSON.stringify(this.students));
   }
 
   saveStudent(event, index) {
@@ -52,9 +64,4 @@ export class OverviewComponent {
     localStorage.setItem('students', JSON.stringify(this.students));
     window.location.reload();
   }
-
-
-
-
-
 }

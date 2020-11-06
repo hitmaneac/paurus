@@ -42,7 +42,6 @@ export class UuidService {
       }
     }
     uuids = uuids.sort((a, b) => +a - +b);
-    console.log(uuids);
     return uuids[uuids.indexOf(last) + 1] || uuids[0];
   }
 }

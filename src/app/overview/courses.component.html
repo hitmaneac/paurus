@@ -1,0 +1,23 @@
+﻿<div class="card mt-4 mb-4">
+  <h4 class="card-header">Courses</h4>
+  <div class="card-body">
+    <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th style="width: 10%">Course</th>
+          <th style="width: 10%">Professor</th>
+          <th style="width: 10%">Students</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let course of pageOfItems">
+          <td style="width: 10%">{{course.name}}</td>
+          <td style="width: 10%"><span *ngFor="let professor of professors"></span>professor.courses contains course.id</td>
+          <td style="width: 10%"><span *ngFor="let student of students">student.courses contains course.id</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <jw-pagination [items]="courses" (changePage)="onChangePage($event)" [pageSize]="20"></jw-pagination>
+  </div>
+</div>
